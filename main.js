@@ -31,7 +31,7 @@ async function genCard(urn){
       <div class="card-body">
         <img id="thumb-${encodedUrn}" class="card-img" src="${thumbUrl}">
         <div id="qrcode-${encodedUrn}" class="card-img"></div>
-        <a href="file:///Users/joao.martins/Fontes/Samples/forge-ar/qrcodeUI//viewer.html?urn=${encodedUrn}"><p class="card-text">${urn.split('/')[1]}</p></a>
+        <a href="https://joaomartins-forge.github.io/forge-viewer-ar/viewer.html?urn=${encodedUrn}"><p class="card-text">${urn.split('/')[1]}</p></a>
       </div>
     </div>`
   );
@@ -43,7 +43,7 @@ async function genCard(urn){
 async function addQRcode(divId, urn){
   let element = document.getElementById(divId);
   let qrcode = new QRCode(element);
-  qrcode.makeCode(`http://mypage.com?urn=${urn}`);
+  qrcode.makeCode(`https://joaomartins-forge.github.io/forge-viewer-ar/viewer.html?urn=${urn}`);
 }
 
 async function getThumb(urn, token){
