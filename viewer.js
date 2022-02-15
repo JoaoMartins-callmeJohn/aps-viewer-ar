@@ -145,7 +145,7 @@ window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   if(urlParams.has('urn')){
     let urn = urlParams.get('urn');
-    let objectName = atob(urn).split('/')[1].slice(-4) + '.glb';
+    let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
     downloadGLB(objectName);
   }
   else{
