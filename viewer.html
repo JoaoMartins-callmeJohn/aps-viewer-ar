@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Autodesk Forge SVF2GLB AR Sample</title>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="https://github.com/Autodesk-Forge/learn.forge.viewmodels/raw/master/img/favicon.ico">
+  <!-- Common packages: Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <!-- THREE JS -->
+  <script src="./libs/three.min.js"></script>
+  <script src="./libs/GLTFLoader.js"></script>
+  <script src="./libs/OrbitControls.js"></script>
+  <script src="https://1f7pq6gni1.execute-api.us-east-1.amazonaws.com/latest/objects.js"></script>
+  <script type="module" src="./libs/fflate.module.js"></script>
+  <script type="module" src="./libs/USDZExporter.js"></script>
+  <script type="module" src="./libs/GLTFExporter.js"></script>
+  <script type="module" src="./viewer.js"></script>
+  <!-- this project files -->
+  <style type="text/css">
+    html,
+    body {
+      min-height: 100%;
+      height: 100%;
+    }
+    #forgeViewer {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body >
+  <a id="arlink" style="z-index: 13; position: fixed; right:50vw; top:80vh" download="asset.usdz">
+    <img id="button" width="100" src="./img/arkit.png">
+  </a>
+
+  <div class="container-fluid fill">
+    <div class="row fill">
+      <div id="viewer"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

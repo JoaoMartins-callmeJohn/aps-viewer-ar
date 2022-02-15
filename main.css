@@ -1,0 +1,24 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+  gap: 10px;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30vw;
+}
+
+.card-img img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-text {
+  font-size: calc(1.5rem);
+  text-align: center;
+}
