@@ -39,10 +39,10 @@ async function renderGLB(){
   
   scene.background = new THREE.Color(0xdddddd);
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 5000);
-  camera.rotation.y = 45/180*Math.PI;
-  camera.position.x = 8;
-  camera.position.y = 10;
-  camera.position.z = 10;
+  // camera.rotation.y = 45/180*Math.PI;
+  // camera.position.x = 8;
+  // camera.position.y = 10;
+  // camera.position.z = 10;
 
   //https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.js
   const controls = new THREE.OrbitControls( camera, renderer.domElement );
