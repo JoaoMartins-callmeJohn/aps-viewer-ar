@@ -16,6 +16,7 @@
 .card-img img {
   margin-left: auto;
   margin-right: auto;
+  width: 15vw;
 }
 
 .card-text {
