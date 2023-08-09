@@ -102,7 +102,7 @@ async function updateHref(gltfScene){
 
       let objectURL = URL.createObjectURL(gltfBlob);
       // Just for debugging
-      objectURL = "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf";
+      objectURL = "https://github.com/JoaoMartins-callmeJohn/julialubacheski.github.io/raw/main/assets/ghoul.glb";
       link.href=`intent://arvr.google.com/scene-viewer/1.0?file=${objectURL}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
       break;
     case 'iOS':
