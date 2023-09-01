@@ -161,7 +161,9 @@ window.onload = () => {
           Authorization: 'Bearer ' + token
         }
       };
-      downloadUrl = await(await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options)).json().url;
+      let res = await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options);
+      resjson = await res.json();
+      downloadUrl = resjson.url;
     });
   }
   else{
