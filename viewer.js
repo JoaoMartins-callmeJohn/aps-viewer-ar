@@ -103,6 +103,7 @@ async function updateHref(gltfScene){
       // const gltfBlob = new Blob( [ gltfArraybuffer ], { type: 'application/octet-stream' } );
       
       // let objectURL = URL.createObjectURL(gltfBlob);
+      const urlParams = new URLSearchParams(window.location.search);
       let urn = urlParams.get('urn');
       let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
       downloadUrl = `https://raw.githubusercontent.com/JoaoMartins-callmeJohn/forge-viewer-ar/main/${objectName}`;
