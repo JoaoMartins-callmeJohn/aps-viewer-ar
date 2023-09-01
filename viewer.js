@@ -101,7 +101,7 @@ async function updateHref(gltfScene){
       const gltfArraybuffer = await gltfExporter.parse( gltfScene );
       //https://github.com/google-ar/arcore-android-sdk/issues/1297
       const gltfBlob = new Blob( [ gltfArraybuffer ], { type: 'application/octet-stream' } );
-
+      
       let objectURL = URL.createObjectURL(gltfBlob);
       link.href=`intent://arvr.google.com/scene-viewer/1.0?file=${downloadUrl}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
       break;
@@ -153,7 +153,15 @@ window.onload = () => {
       return response.json();
     }).then(async (data) => {
       let token = data;
-      downloadUrl = await(await fetch()).json().url;
+      let urn = urlParams.get('urn');
+      let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      };
+      downloadUrl = await(await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options)).json().url;
     });
   }
   else{
