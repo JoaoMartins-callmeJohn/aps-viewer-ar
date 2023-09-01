@@ -1,6 +1,8 @@
 import { USDZExporter } from './libs/USDZExporter.js'
 
 var glbModel;
+var downloadUrl;
+
 
 async function downloadGLB(objectName){
   let url = `https://9xftihv3e6.execute-api.us-east-1.amazonaws.com/default/DownloadObject?bucketKey=jpomglbardample&objectName=${objectName}`;
@@ -101,9 +103,7 @@ async function updateHref(gltfScene){
       const gltfBlob = new Blob( [ gltfArraybuffer ], { type: 'application/octet-stream' } );
 
       let objectURL = URL.createObjectURL(gltfBlob);
-      // Just for debugging
-      objectURL = "https://github.com/JoaoMartins-callmeJohn/julialubacheski.github.io/raw/main/assets/ghoul.glb";
-      link.href=`intent://arvr.google.com/scene-viewer/1.0?file=${objectURL}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
+      link.href=`intent://arvr.google.com/scene-viewer/1.0?file=${downloadUrl}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
       break;
     case 'iOS':
       const usdzExporter = new USDZExporter();
@@ -149,6 +149,12 @@ window.onload = () => {
     let urn = urlParams.get('urn');
     let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
     downloadGLB(objectName);
+    fetch("https://l15xenb90a.execute-api.us-east-1.amazonaws.com/default/GetToken").then(response => {
+      return response.json();
+    }).then(async (data) => {
+      let token = data;
+      downloadUrl = await(await fetch()).json().url;
+    });
   }
   else{
     alert('URN MISSING')
