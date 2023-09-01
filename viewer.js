@@ -148,7 +148,6 @@ window.onload = () => {
   if(urlParams.has('urn')){
     let urn = urlParams.get('urn');
     let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
-    downloadGLB(objectName);
     fetch("https://l15xenb90a.execute-api.us-east-1.amazonaws.com/default/GetToken").then(response => {
       return response.json();
     }).then(async (data) => {
@@ -164,6 +163,7 @@ window.onload = () => {
       let res = await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options);
       let resjson = await res.json();
       downloadUrl = resjson.url;
+      downloadGLB(objectName);
     });
   }
   else{
