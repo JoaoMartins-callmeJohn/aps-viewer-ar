@@ -162,7 +162,7 @@ window.onload = () => {
         }
       };
       let res = await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options);
-      resjson = await res.json();
+      let resjson = await res.json();
       downloadUrl = resjson.url;
     });
   }
