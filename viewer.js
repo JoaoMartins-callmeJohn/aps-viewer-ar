@@ -106,7 +106,8 @@ async function updateHref(gltfScene) {
       const urlParams = new URLSearchParams(window.location.search);
       let urn = urlParams.get('urn');
       let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
-      downloadUrl = `https://raw.githubusercontent.com/JoaoMartins-callmeJohn/forge-viewer-ar/main/${objectName}`;
+      // downloadUrl = `https://raw.githubusercontent.com/JoaoMartins-callmeJohn/forge-viewer-ar/main/${objectName}`;
+
       link.href = `intent://arvr.google.com/scene-viewer/1.0?file=${downloadUrl}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
       break;
     case 'iOS':
@@ -153,23 +154,23 @@ window.onload = () => {
     let urn = urlParams.get('urn');
     let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
     downloadGLB(objectName);
-    //   fetch("https://l15xenb90a.execute-api.us-east-1.amazonaws.com/default/GetToken").then(response => {
-    //     return response.json();
-    //   }).then(async (data) => {
-    //     let token = data;
-    //     let urn = urlParams.get('urn');
-    //     let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
-    //     const options = {
-    //       method: 'GET',
-    //       headers: {
-    //         Authorization: 'Bearer ' + token
-    //       }
-    //     };
-    //     let res = await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options);
-    //     let resjson = await res.json();
-    //     downloadUrl = resjson.url;
-    //     downloadGLB(objectName);
-    //   });
+      fetch("https://l15xenb90a.execute-api.us-east-1.amazonaws.com/default/GetToken").then(response => {
+        return response.json();
+      }).then(async (data) => {
+        let token = data;
+        let urn = urlParams.get('urn');
+        let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
+        const options = {
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        };
+        let res = await fetch(`https://developer.api.autodesk.com/oss/v2/buckets/jpomglbardample/objects/${objectName}/signeds3download?useCdn=true&minutesExpiration=60`, options);
+        let resjson = await res.json();
+        downloadUrl = resjson.url;
+        downloadGLB(objectName);
+      });
   }
   else {
     alert('URN MISSING')
