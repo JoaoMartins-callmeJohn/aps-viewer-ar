@@ -108,7 +108,7 @@ async function updateHref(gltfScene) {
       let objectName = atob(urn).split('/')[1].slice(0, -4) + '.glb';
       // downloadUrl = `https://raw.githubusercontent.com/JoaoMartins-callmeJohn/forge-viewer-ar/main/${objectName}`;
 
-      link.href = `intent://arvr.google.com/scene-viewer/1.0?file=${downloadUrl}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
+      link.href = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(downloadUrl)}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;`;
       break;
     case 'iOS':
       const usdzExporter = new USDZExporter();
