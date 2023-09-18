@@ -9,19 +9,19 @@ window.onload = () => {
   });
 
   fetch("https://ieaxpcp8n6.execute-api.us-east-1.amazonaws.com/GetUrnsFromBucket")
-  .then(response => {
-    return response.json();
-  }).then(data => {
-    data.forEach(urn => {
-      genCard(urn);
+    .then(response => {
+      return response.json();
+    }).then(data => {
+      data.forEach(urn => {
+        genCard(urn);
+      });
+    })
+    .catch(err => {
+      console.error(err);
     });
-  })
-  .catch(err => {
-    console.error(err);
-  });
 }
 
-async function genCard(urn){
+async function genCard(urn) {
   let encodedUrn = btoa(urn);
   let thumbUrl = await getThumb(encodedUrn, token);
 
@@ -31,7 +31,7 @@ async function genCard(urn){
       <div class="card-body">
         <img id="thumb-${encodedUrn}" class="card-img" src="${thumbUrl}">
         <div id="qrcode-${encodedUrn}" class="card-img"></div>
-        <a href="https://JoaoMartins-callmeJohn.github.io/forge-viewer-ar/viewer.html?urn=${encodedUrn}"><p class="card-text">${urn.split('/')[1]}</p></a>
+        <a href="https://JoaoMartins-callmeJohn.github.io/aps-viewer-ar/viewer.html?urn=${encodedUrn}"><p class="card-text">${urn.split('/')[1]}</p></a>
       </div>
     </div>`
   );
@@ -40,13 +40,13 @@ async function genCard(urn){
 
 }
 
-async function addQRcode(divId, urn){
+async function addQRcode(divId, urn) {
   let element = document.getElementById(divId);
   let qrcode = new QRCode(element);
-  qrcode.makeCode(`https://JoaoMartins-callmeJohn.github.io/forge-viewer-ar/viewer.html?urn=${urn}`);
+  qrcode.makeCode(`https://JoaoMartins-callmeJohn.github.io/aps-viewer-ar/viewer.html?urn=${urn}`);
 }
 
-async function getThumb(urn, token){
+async function getThumb(urn, token) {
   let imgUrl;
   await fetch(`https://developer.api.autodesk.com/modelderivative/v2/designdata/${urn}/thumbnail`, {
     "method": "GET",
@@ -54,17 +54,17 @@ async function getThumb(urn, token){
       "Authorization": "Bearer " + token
     }
   })
-  .then(response => {
-    return response.blob();
-  })
-  .then(data => {
-    var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(data);
-    imgUrl = imageUrl;
-  })
-  .catch(err => {
-    console.error(err);
-  });
+    .then(response => {
+      return response.blob();
+    })
+    .then(data => {
+      var urlCreator = window.URL || window.webkitURL;
+      var imageUrl = urlCreator.createObjectURL(data);
+      imgUrl = imageUrl;
+    })
+    .catch(err => {
+      console.error(err);
+    });
 
   return imgUrl;
 }
