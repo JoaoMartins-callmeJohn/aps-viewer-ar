@@ -4,7 +4,7 @@
 
 This sample demonstrates a way to convert SVF(2) derivatives to USDZ to use on your AR workflows.
 
-### DEMO: [https://JoaoMartins-callmeJohn.github.io/forge-viewer-ar/](https://joaomartins-callmejohn.github.io/aps-viewer-ar/)
+### DEMO: [https://JoaoMartins-callmeJohn.github.io/aps-viewer-ar/](https://joaomartins-callmejohn.github.io/aps-viewer-ar/)
 
 ### PREPARATION
 
