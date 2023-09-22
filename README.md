@@ -13,7 +13,6 @@ We start with our SVF translated models, and from there we can use [forge-conver
 For simplicity, we can generate a glb from the gltf ([here's](https://gist.github.com/JoaoMartins-callmejohn/01930cd6d044d2c1a23ea932616ace7d#file-svf-to-gltf-to-glb-L39-L57) a sample for that).
 And then we can upload the glb to a bucket to later be used by our application.
 We could, for instance, create a lambda that converts and upload the glb to our bucket, and trigger that using a webhook through the [extraction.finished](https://aps.autodesk.com/en/docs/webhooks/v1/reference/events/extraction.finished/) event.
-Follow the steps below to load them.
 
 #### RENDERING THE MODEL
 
